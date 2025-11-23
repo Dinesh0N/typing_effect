@@ -2,8 +2,8 @@ bl_info = {
     "name": "Typing Effect for VSE Text Strips",
     "description": "Adds a typing animation effect to VSE text strips based on strip timings.",
     "author": "tintwotin",
-    "version": (1, 0, 4),
-    "blender": (3, 0, 0),
+    "version": (1, 0, 5),
+    "blender": (4, 5, 0),
     "location": "Video Sequence Editor > Sidebar > Effect Strip",
     "category": "Sequencer",
 }
@@ -71,13 +71,13 @@ def unregister_handlers():
 
 # Append properties to text strips
 def append_properties():
-    bpy.types.Sequence.typing_effect_enabled = bpy.props.BoolProperty(
+    bpy.types.Strip.typing_effect_enabled = bpy.props.BoolProperty(
         name="Typing Effect",
         description="Enable typing animation for this text strip based on strip timings",
         default=False,
         update=toggle_typing_effect,  # Trigger sync logic
     )
-    bpy.types.Sequence.typing_effect_text = bpy.props.StringProperty(
+    bpy.types.Strip.typing_effect_text = bpy.props.StringProperty(
         name="Typing Effect Text",
         description="The text used for the typing effect",
         default="",
@@ -85,8 +85,8 @@ def append_properties():
 
 # Remove properties
 def remove_properties():
-    del bpy.types.Sequence.typing_effect_enabled
-    del bpy.types.Sequence.typing_effect_text
+    del bpy.types.Strip.typing_effect_enabled
+    del bpy.types.Strip.typing_effect_text
 
 # Register add-on classes and handlers
 def register():
